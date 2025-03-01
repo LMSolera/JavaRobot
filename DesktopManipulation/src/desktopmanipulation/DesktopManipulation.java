@@ -40,7 +40,7 @@ public class DesktopManipulation {
         try {
             Robot robot = new Robot();
             robot.delay(1000);
-            String sample = "Give me the best description you can for the following word: " + text;
+            String sample = "Em português, me dê descrição completa e bem estruturada sobre a seguinte palavra: \"" + text + "\"" + ". Se possível, me passe fontes para sua descrição.";
             StringSelection stringSelection = new StringSelection(sample);
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(stringSelection, stringSelection);
@@ -63,7 +63,7 @@ public class DesktopManipulation {
     }
     
     private static String getUserInput () {
-        System.out.print ("Choose a word: ");
+        System.out.print ("Defina uma palavra: ");
         Scanner scan = new Scanner(System.in);
         return scan.nextLine();
     }
@@ -73,11 +73,7 @@ public class DesktopManipulation {
         String userInput = getUserInput();
         url = url.create("https://www.blackbox.ai/");
         runSearch(url);
-        
-        
         typeText(userInput);
-        
-        
         Robot roboto = null;
         roboto = instantiateRobot(roboto);
         roboto.keyPress(KeyEvent.VK_ENTER);
