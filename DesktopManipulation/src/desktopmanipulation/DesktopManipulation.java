@@ -44,6 +44,15 @@ public class DesktopManipulation {
             StringSelection stringSelection = new StringSelection(sample);
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(stringSelection, stringSelection);
+            robot.keyPress(KeyEvent.VK_ALT);
+            robot.delay(30);
+            robot.keyPress(KeyEvent.VK_SPACE);
+            robot.delay(30);
+            robot.keyPress(KeyEvent.VK_X);
+            robot.keyRelease(KeyEvent.VK_ALT);
+            robot.keyRelease(KeyEvent.VK_SPACE);
+            robot.keyRelease(KeyEvent.VK_X);
+            robot.delay(150);
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);      
             robot.keyRelease(KeyEvent.VK_V);
