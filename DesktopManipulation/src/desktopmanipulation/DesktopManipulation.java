@@ -39,20 +39,20 @@ public class DesktopManipulation {
     private static void typeText (String text) {
         try {
             Robot robot = new Robot();
-            robot.delay(1000);
+            robot.delay(2000);
             String sample = "Em português, me dê descrição completa e bem estruturada sobre a seguinte palavra: \"" + text + "\"" + ". Se possível, me passe fontes para sua descrição.";
             StringSelection stringSelection = new StringSelection(sample);
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(stringSelection, stringSelection);
             robot.keyPress(KeyEvent.VK_ALT);
-            robot.delay(30);
+            robot.delay(300);
             robot.keyPress(KeyEvent.VK_SPACE);
-            robot.delay(30);
+            robot.delay(300);
             robot.keyPress(KeyEvent.VK_X);
             robot.keyRelease(KeyEvent.VK_ALT);
             robot.keyRelease(KeyEvent.VK_SPACE);
             robot.keyRelease(KeyEvent.VK_X);
-            robot.delay(150);
+            robot.delay(500);
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_V);      
             robot.keyRelease(KeyEvent.VK_V);
