@@ -33,7 +33,9 @@ public class DesktopManipulation {
                 System.out.println ("Deu errado: " + e + "\n");
                 System.out.println ("URI attempt: " + url + "\n");
                 System.out.println("Aperte algo para continuar...");
-                new java.util.Scanner(System.in).nextLine();
+                Scanner hold = new java.util.Scanner(System.in);
+                hold.nextLine();
+                hold.close();
             }
         }else{
             System.out.println("Desktop não é suportado neste sistema.");
@@ -71,13 +73,15 @@ public class DesktopManipulation {
     private static String getUserInput () {
         System.out.print ("Defina uma palavra: ");
         Scanner scan = new Scanner(System.in);
-        return scan.nextLine();
+        String entrada = scan.nextLine();
+        scan.close();
+        return entrada;
     }
     
     public static void main(String[] args) {
         URI url = null;  // URI = tipo url
         String userInput = getUserInput(); 
-        url = url.create("https://www.blackbox.ai/"); 
+        url = URI.create("https://www.blackbox.ai/"); 
         runSearch(url);
         escreverTexto(userInput);
         Robot roboto = null;
