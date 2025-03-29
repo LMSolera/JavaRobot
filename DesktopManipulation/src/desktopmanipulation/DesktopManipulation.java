@@ -12,7 +12,7 @@ import java.awt.datatransfer.Clipboard;
 
 public class DesktopManipulation {
     
-    private static Robot instantiateRobot (Robot robot) {
+    private static Robot instanciarRobo (Robot robot) {
         try {
             robot = new Robot();
             return robot;
@@ -23,16 +23,12 @@ public class DesktopManipulation {
     }
     
     private static void runSearch (URI url) { 
-        
         if(Desktop.isDesktopSupported()){ //conferir se o sistema suporta
-               
             Desktop desk = null;
-            desk = desk.getDesktop();  //cria meio que a interface para que o java mexa com o sistema operacional
-
+            desk = Desktop.getDesktop();  //cria meio que a interface para que o java mexa com o sistema operacional
             try {
 
                 desk.browse(url); //inicia o navegador padrão na url
-
             } catch (Exception e) {
                 System.out.println ("Deu errado: " + e + "\n");
                 System.out.println ("URI attempt: " + url + "\n");
@@ -44,15 +40,14 @@ public class DesktopManipulation {
         }
     }
     
-    private static void typeText (String text) {
+    private static void escreverTexto (String text) {
         try {
             Robot robot = new Robot();
-            robot.delay(2000); // depois de instanciar, delay de 2seg
+            robot.delay(5000); // depois de instanciar, delay de 5 seg
             String sample = "Em português, me dê descrição completa e bem estruturada sobre a seguinte palavra: \"" + text + "\"" + ". Se possível, me passe fontes para sua descrição.";
             StringSelection stringSelection = new StringSelection(sample); //cria um objeto que contém o texto para transferir para a área de transferência
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard(); //retorna a área de transferencia do sistema
             clipboard.setContents(stringSelection, stringSelection); //coloca os dados da string no clipboard
-            
             //robo apertando os botões
             robot.keyPress(KeyEvent.VK_ALT);
             robot.delay(300);
@@ -84,9 +79,9 @@ public class DesktopManipulation {
         String userInput = getUserInput(); 
         url = url.create("https://www.blackbox.ai/"); 
         runSearch(url);
-        typeText(userInput);
+        escreverTexto(userInput);
         Robot roboto = null;
-        roboto = instantiateRobot(roboto); //instancia o roboto
+        roboto = instanciarRobo(roboto); //instancia o roboto
         roboto.keyPress(KeyEvent.VK_ENTER);
         roboto.keyRelease(KeyEvent.VK_ENTER);
     }       
