@@ -214,7 +214,7 @@ public class Upload extends javax.swing.JFrame {
         File destino = new File(pasta, origem.getName());
 
         try (FileInputStream in = new FileInputStream(origem); 
-             FileOutputStream out = new FileOutputStream(destino)) {
+            FileOutputStream out = new FileOutputStream(destino)) {
             byte[] buffer = new byte[1024];
             int bytesLidos;
             while ((bytesLidos = in.read(buffer)) != -1) {
@@ -253,7 +253,7 @@ public class Upload extends javax.swing.JFrame {
     }//GEN-LAST:event_procurarPropostaActionPerformed
 
     private void enviarPropostaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarPropostaActionPerformed
-        // TODO add your handling code here:
+        savePdfFile(caminhoLicitacao.getText(),"DesktopManipulation/files/Licitacoes"); //necessario arrumar o caminho
     }//GEN-LAST:event_enviarPropostaActionPerformed
 
     /**
