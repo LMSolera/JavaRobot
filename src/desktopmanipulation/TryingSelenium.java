@@ -1,5 +1,6 @@
 package desktopmanipulation;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.Scanner;
@@ -7,15 +8,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver; 
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TryingSelenium {
     public static WebDriver inicializarDriver () {
-        System.setProperty("webdriver.chrome.driver", 
-        "..\\..\\Drivers\\chromedriver.exe");
+        File driverPath = new File("Drivers\\chromedriver.exe");
+        ChromeDriverService service = new ChromeDriverService.Builder().usingDriverExecutable(driverPath).build();
         ChromeOptions config = new ChromeOptions();
-        config.addArguments("--headless=new");  
-        WebDriver page = new ChromeDriver(config);
+        config.addArguments("--headless=new");
+        WebDriver page = new ChromeDriver(service, config);
         return page;
     } //teste
     
@@ -37,8 +39,8 @@ public class TryingSelenium {
         List<WebElement> divResposta = pagina.findElements(By.xpath("/html/body/div[2]/main/div/div[2]/div[2]/div/div/div/div/div/div/div/div[1]/div/div/div[2]/div[2]/div"));
         pagina.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         divResposta = pagina.findElements(By.cssSelector("div[class='prose break-words dark:prose-invert prose-p:leading-relaxed prose-pre:p-0 fix-max-with-100']"));
-        System.out.println(divResposta.get(0).getText());
-        System.out.println(divResposta.get(1).getText());
+        System.out.println("Prompt: " + divResposta.get(0).getText());
+        System.out.println("Resposta: " + divResposta.get(1).getText());
       
 //          Método antigo que eu tava usando, talvez ainda seja útil
 //        List<WebElement> resposta  = divResposta.findElements(By.tagName("p"));  
