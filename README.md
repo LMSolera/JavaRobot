@@ -5,7 +5,7 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LMSolera/README-template?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LMSolera/README-template?style=for-the-badge)
 
-![image](https://github.com/user-attachments/assets/0b27f4c9-11f9-44e1-af3d-dbd4f5edea2a)
+![image](https://github.com/user-attachments/assets/0b27f4c9-11f9-44e1-af3d-dbd4f5edea2a) | width = 400px
 ![image](https://github.com/user-attachments/assets/f1e8a63f-c50a-4a93-bed8-9217885b558a)
 
 > Esse projeto está sendo feito pensando na enorme burocracia que o sistema de licitações possui, levando em consideração todo o trabalho que já existe na criação de uma licitação, pensamos em um sistema onde o usuário irá colocar
