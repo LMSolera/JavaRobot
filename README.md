@@ -1,9 +1,9 @@
 # Nome do projeto
 
-![GitHub repo Size](https://img.shields.io/github/repo-size/LMSolera/JavaRobot?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/LMSolera/JavaRobot?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LMSolera/JavaRobot?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LMSolera/JavaRobot?style=for-the-badge)
+![GitHub repo Size](https://img.shields.io/github/repo-size/LMSolera/SCdL?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/LMSolera/SCdL?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LMSolera/SCdL?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LMSolera/SCdL?style=for-the-badge)
 
 <p align="center"><img src="https://github.com/user-attachments/assets/0b27f4c9-11f9-44e1-af3d-dbd4f5edea2a" width="600"/><br>
 <img src="https://github.com/user-attachments/assets/f1e8a63f-c50a-4a93-bed8-9217885b558a" width="400"/></p>
@@ -30,7 +30,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 - Você instalou a versão mais recente de `JDK `
-- Você ter clonado o projeto `https://github.com/LMSolera/JavaRobot.git master `
+- Você ter clonado o projeto `https://github.com/LMSolera/SCdL.git master `
 - Você tem uma máquina `<Windows / Linux / Mac>`. 
 
 
@@ -41,7 +41,7 @@ Para contribuir com Checagem de contrato, siga estas etapas:
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b master`.
 3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push https://github.com/LMSolera/JavaRobot.git master`
+4. Envie para o branch original: `git push https://github.com/LMSolera/SCdL.git master`
 5. Crie a solicitação de pull.
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
