@@ -13,6 +13,11 @@
 > Esse projeto está sendo feito pensando na enorme burocracia que o sistema de licitações possui, levando em consideração todo o trabalho que já existe na criação de uma licitação, pensamos em um sistema onde o usuário irá colocar
 > a licitação da empresa e em seguida inserir os contratos de propostas, enviando tudo para uma IA realizar a comparação
 
+## Banco de dados
+<p align="center"><img src="https://github.com/user-attachments/assets/36da5309-08f0-4b83-966c-7fc95440bd30" width="600"/><br>
+  
+> Atualmente este é o nosso modelo de banco de dados
+
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
@@ -21,7 +26,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Criação da lógica de armazenamento de pdfs
 - [x] Criação das interfaces gráficas
 - [ ] Polimento das Interfaces Gráficas
-- [ ] Escolha e modelamento do banco de dados
+- [x] Escolha e modelamento do banco de dados
 - [ ] implementação do banco
 - [ ] Utilização da IA para as devidas comparações
 
