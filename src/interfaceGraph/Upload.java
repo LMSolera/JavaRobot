@@ -180,8 +180,8 @@ public class Upload extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private static final String BIDDING_FOLDER = "DesktopManipulation/files/Licitacoes";
-    private static final String PROPOSALS_FOLDER = "DesktopManipulation/files/Propostas";
+    private static final String BIDDING_FOLDER = "Files/Licitacoes";
+    private static final String PROPOSALS_FOLDER = "Files/Propostas";
     
     //escolher arquivo
     private String chooseFile(){
