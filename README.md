@@ -5,7 +5,8 @@
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LMSolera/SCdL?style=for-the-badge)
 
 <p align="center"><img src="https://github.com/user-attachments/assets/0b27f4c9-11f9-44e1-af3d-dbd4f5edea2a" width="600"/><br>
-<img src="https://github.com/user-attachments/assets/f1e8a63f-c50a-4a93-bed8-9217885b558a" width="400"/></p>
+<img src="https://github.com/user-attachments/assets/f1e8a63f-c50a-4a93-bed8-9217885b558a" width="400"/>
+<img src = "https://github.com/user-attachments/assets/21fec1fc-df54-430c-9d5d-75307e4a0768"/></p>
 
 > Estado de protótipo de possíveis interfaces que podemos utilizar.
 
