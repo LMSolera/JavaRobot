@@ -1,0 +1,60 @@
+/* Exemplo de styles.css */
+
+.main-container {
+    -fx-background-color: #f4f4f9; /* Um fundo suave */
+}
+
+.title-label {
+    -fx-text-fill: #333333; /* Cor escura para o título */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.0, 0, 2); /* Sombra sutil */
+}
+
+.file-input-grid {
+    /* Pode adicionar bordas, fundo, etc. ao grid se desejar */
+}
+
+.file-select-button {
+    -fx-background-color: #5cacee; /* Azul claro */
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 15px;
+}
+
+.file-select-button:hover {
+    -fx-background-color: #4a8fd1; /* Azul um pouco mais escuro no hover */
+}
+
+.file-path-label {
+    -fx-text-fill: #555555;
+    -fx-background-color: #e9e9ed; /* Fundo sutil para o label do caminho */
+    -fx-padding: 5px 8px;
+    -fx-background-radius: 3px;
+}
+
+.action-button {
+    -fx-background-color: #4CAF50; /* Verde para ação primária */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0.0, 0, 3);
+}
+
+.action-button:hover {
+    -fx-background-color: #45a049; /* Verde mais escuro no hover */
+}
+
+.result-label {
+    -fx-text-fill: #2c3e50; /* Cor de texto para o resultado */
+    -fx-font-style: italic;
+}
+
+/* Estilos para quando o resultado for um sucesso (exemplo) */
+.result-label.success {
+    -fx-text-fill: #27ae60; /* Verde */
+}
+
+/* Estilos para quando o resultado for um erro (exemplo) */
+.result-label.error {
+    -fx-text-fill: #c0392b; /* Vermelho */
+}
