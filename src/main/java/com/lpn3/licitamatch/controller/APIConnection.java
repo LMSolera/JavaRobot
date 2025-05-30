@@ -12,12 +12,11 @@ import java.time.Duration;
 import java.util.Map;
 
 
-// API Key DP - sk-19aa9fd431f5433cb280b598ece1a461
-// API Key OR - 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
+
 
 public class APIConnection {
     public static void main(String[] args) {
-        String openRouterApiKey = "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";
+        String openRouterApiKey = "chave";
         String yourSiteUrl = null; // Opcional
         String yourAppName = null; // Opcional
         
