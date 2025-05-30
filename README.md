@@ -1,5 +1,4 @@
-# Nome do projeto
-
+# SCdL / LicitaMatch
 ![GitHub repo Size](https://img.shields.io/github/repo-size/LMSolera/SCdL?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/LMSolera/SCdL?style=for-the-badge)
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LMSolera/SCdL?style=for-the-badge)
