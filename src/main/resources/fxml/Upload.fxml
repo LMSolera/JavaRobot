@@ -29,9 +29,9 @@
    <VBox spacing="8" GridPane.rowIndex="1">
       <Label text="Arquivo 1:"/>
       <HBox spacing="10" alignment="CENTER_LEFT">
-         <Button fx:id="botaoArquivo1" text="Selecionar Arquivo 1"
+         <Button fx:id="botaoProposta" text="Selecionar Proposta"
                  onAction="#selecionarArquivo1" styleClass="file-select-button"/>
-         <Label fx:id="labelArquivo1" text="Nenhum arquivo selecionado" styleClass="file-path-label"/>
+         <Label fx:id="labelProposta" text="Nenhum arquivo selecionado" styleClass="file-path-label"/>
       </HBox>
    </VBox>
 
@@ -39,9 +39,9 @@
    <VBox spacing="8" GridPane.rowIndex="2">
       <Label text="Arquivo 2:"/>
       <HBox spacing="10" alignment="CENTER_LEFT">
-         <Button fx:id="botaoArquivo2" text="Selecionar Arquivo 2"
+         <Button fx:id="botaoLicitacao" text="Selecionar Licitação"
                  onAction="#selecionarArquivo2" styleClass="file-select-button"/>
-         <Label fx:id="labelArquivo2" text="Nenhum arquivo selecionado" styleClass="file-path-label"/>
+         <Label fx:id="labelLicitacao" text="Nenhum arquivo selecionado" styleClass="file-path-label"/>
       </HBox>
    </VBox>
 
