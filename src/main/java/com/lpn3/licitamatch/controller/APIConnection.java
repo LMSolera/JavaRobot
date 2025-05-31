@@ -1,13 +1,11 @@
 package com.lpn3.licitamatch.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.io.IOException;
-import java.io.StringReader;
 import java.time.Duration;
 import java.util.Map;
 
@@ -16,9 +14,7 @@ import java.util.Map;
 
 public class APIConnection {
     public static void main(String[] args) {
-        String openRouterApiKey = "chave";
-        String yourSiteUrl = null; // Opcional
-        String yourAppName = null; // Opcional
+        String openRouterApiKey = "Chave";
         
         String openRouterApiUrl = "https://openrouter.ai/api/v1/chat/completions";
 
@@ -27,9 +23,9 @@ public class APIConnection {
           "model": "deepseek/deepseek-r1-0528:free",
           "messages": [
             {"role": "system", "content": "Você é um profesor"},
-            {"role": "user", "content": "Explique o teorema de pitágoras dentro de 350 caracteres"}
+            {"role": "user", "content": "Em português, explique o teorema de pitágoras sem adição de "*" na resposta."}
           ],
-          "max_tokens": 500,
+          "max_tokens": 1000,
           "temperature": 0.7
         }
         """;
@@ -47,18 +43,11 @@ public class APIConnection {
                 .header("Authorization", "Bearer " + openRouterApiKey)
                 .POST(HttpRequest.BodyPublishers.ofString(jsonInputString));
 
-        if (yourSiteUrl != null && !yourSiteUrl.isEmpty()) {
-            requestBuilder.header("HTTP-Referer", yourSiteUrl);
-        }
-        if (yourAppName != null && !yourAppName.isEmpty()) {
-            requestBuilder.header("X-Title", yourAppName);
-        }
-
         HttpRequest request = requestBuilder.build();
 
         System.out.println("Enviando requisição para OpenRouter: " + openRouterApiUrl);
         System.out.println("Cabeçalhos: " + request.headers().map());
-        System.out.println("Corpo da requisição: " + jsonInputString);
+        System.out.println("Corpo da requisição:\n" + jsonInputString);
 
 
         try {
@@ -66,7 +55,6 @@ public class APIConnection {
 
             System.out.println("\n--- Resposta do OpenRouter ---");
             System.out.println("Status Code: " + response.statusCode());
-//            System.out.println("Corpo da Resposta: " + response.body());
 
             if (response.statusCode() >= 200 && response.statusCode() < 300) {
                 System.out.println("Requisição bem-sucedida!");
@@ -74,17 +62,22 @@ public class APIConnection {
                 String jsonString = response.body();            
                 Gson gson = new Gson();
                 
-                JsonReader reader = gson.newJsonReader(new StringReader(jsonString));
-                
-                Map<?, ?> mapaResposta = gson.fromJson(reader, Map.class);
-                
-                for (Map.Entry<?, ?> entry : mapaResposta.entrySet()) {
-                    System.out.println (entry.getKey() + " : " + entry.getValue());
+                Map<?, ?> mapaRespostaCompleta = gson.fromJson(jsonString, Map.class);
+                               
+                for (Map.Entry<?, ?> entry : mapaRespostaCompleta.entrySet()) {
+                    if (entry.getKey().toString().equals("choices")) {
+                        String[] conteudo = entry.getValue().toString().split("content=");
+                        conteudo = conteudo[1].split("Caracteres:");
+                        conteudo = conteudo[0].split(", refusal=null");
+                        System.out.println("Resposta: \n" + conteudo[0]);
+                        conteudo = conteudo[1].split("reasoning=");
+                        conteudo = conteudo[1].split("}}]");
+                        System.out.println("\nRaciocínio: \n" + conteudo[0]);
+                    }
                 }
                 
             } else {
-                System.err.println("Erro na requisição. Detalhes acima.");
-                
+                System.err.println("Erro na requisição. Detalhes acima."); 
             }
 
         } catch (IOException | InterruptedException e) {
