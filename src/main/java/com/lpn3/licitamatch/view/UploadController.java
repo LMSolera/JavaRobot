@@ -24,25 +24,38 @@ public class UploadController implements Initializable {
 
     private File file1;
     private File file2;
-    
+    private static final String PROPOSALS_FOLDER = "uploads/propostas";
+    private static final String BIDDING_FOLDER = "uploads/licitacoes"
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }    
     
-    @FXML
-    private void selecionarArquivoProposta(ActionEvent event) {
+    //escolher arquivo
+    private String chooseFile() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Selecionar Arquivo 1");
+        fileChooser.setTitle("Selecionar Arquivo");
         File selectedFile = fileChooser.showOpenDialog(getStage());
-
         if (selectedFile != null) {
-            file1 = selectedFile;
-            labelArquivo1.setText(selectedFile.getName());
-            
-            File destinationFolder = new File(./sentFiles)
-        
+            return selectedFile.getAbsolutePath();
+        } else {
+            return null;
         }
     }
+    
+    private void savePDF (String origemCaminho, String pastaDestino){
+        File origem = new File(origemCaminho);
+        File pastaDestino = new File(PastaDestino);
+        
+        if(!pastaDestino.exists()){
+            pastaDestino.mkdirs();
+        }
+        
+        
+    }
+    
+    
+
+    
     
 }
