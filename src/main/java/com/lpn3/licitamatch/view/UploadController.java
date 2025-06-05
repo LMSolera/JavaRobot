@@ -45,13 +45,13 @@ public class UploadController implements Initializable {
     
     private void savePDF (String origemCaminho, String pastaDestino){
         File origem = new File(origemCaminho);
-        File pastaDestino = new File(PastaDestino);
+        File pasta = new File(pastaDestino);
         
-        if(!pastaDestino.exists()){
-            pastaDestino.mkdirs();
+        if(!pasta.exists()){
+            pasta.mkdirs();
         }
-        
-        
+         
+       File destino = new File(pasta, origem.getName());
     }
     
     
