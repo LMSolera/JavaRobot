@@ -8,9 +8,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:controller="com.lpn3.licitamatch.view.UploadController"
+<GridPane xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="com.lpn3.licitamatch.controller.UploadController"
+          stylesheets="@/styles/upload.css"
           xmlns="http://javafx.com/javafx/17"
-          xmlns:fx="http://javafx.com/fxml/1"
           hgap="20" vgap="20" alignment="CENTER"
           styleClass="main-container">
     <padding>
