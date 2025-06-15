@@ -1,0 +1,32 @@
+/* Pane da esquerda com fundo azul */
+.left-pane {
+    -fx-background-color: #008e9d;
+}
+
+/* Ícone azul escuro */
+.icon-envelope {
+    -fx-fill: #000454;
+}
+
+/* Ícones azul claro */
+.icon-user, .icon-key, .icon-users {
+    -fx-fill: #008e9d;
+}
+
+/* Ícone selecionado (extra para users) */
+.icon-users {
+    -fx-selection-fill: #c3a8a8;
+}
+
+/* Campo de entrada com borda inferior azul */
+.input-field {
+    -fx-background-color: transparent;
+    -fx-border-color: #0598ff;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+/* Botão com bordas arredondadas */
+.login-button {
+    -fx-border-radius: 50px;
+    -fx-text-fill: white;
+}
