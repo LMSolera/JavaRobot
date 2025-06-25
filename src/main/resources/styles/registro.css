@@ -1,0 +1,31 @@
+/* Estilo da pane esquerda */
+.left-pane {
+    -fx-background-color: #008e9d;
+}
+
+/* Ícone da esquerda */
+.icon-envelope {
+    -fx-fill: white;
+}
+
+/* Ícones da direita */
+.icon-user, .icon-key, .icon-users {
+    -fx-fill: #008e9d;
+}
+
+/* Campos de entrada */
+.input-field {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #008e9d;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+}
+
+/* Botão de registro */
+.login-button {
+    -fx-background-color: #008e9d;
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}

@@ -11,48 +11,38 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="500.0" prefWidth="700.0"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="@login.css">
+<BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
 
    <left>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0"
-                  styleClass="left-pane" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="350.0" styleClass="left-pane" BorderPane.alignment="CENTER">
          <children>
-            <FontAwesomeIconView glyphName="ENVELOPE" layoutX="133.0" layoutY="131.0" size="70"
-                                 wrappingWidth="13.3" styleClass="icon-envelope"/>
-            <TextField layoutX="36.0" layoutY="143.0" prefHeight="64.0" prefWidth="265.0"
-                       text="Sistema Comparativo de licitações e propostas"/>
+            <FontAwesomeIconView glyphName="ENVELOPE" layoutX="133.0" layoutY="131.0" size="70" styleClass="icon-envelope" wrappingWidth="13.3" />
+            <Text layoutX="41.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema Comparativo de licitações e propostas" textAlignment="CENTER" wrappingWidth="268.80419921875">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </left>
 
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="536.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="358.0" BorderPane.alignment="CENTER">
          <children>
-            <PasswordField layoutX="116.0" layoutY="181.0" prefHeight="25.0" prefWidth="155.0"
-                           promptText="User name" styleClass="input-field"/>
-            <TextField layoutX="116.0" layoutY="242.0" prefHeight="25.0" prefWidth="152.0"
-                       promptText="Password" styleClass="input-field"/>
-            <FontAwesomeIconView glyphName="USER" layoutX="83.0" layoutY="204.0" size="20"
-                                 styleClass="icon-user"/>
-            <FontAwesomeIconView glyphName="KEY" layoutX="82.0" layoutY="265.0" size="20"
-                                 styleClass="icon-key"/>
-            <Button layoutX="140.0" layoutY="342.0" mnemonicParsing="false"
-                    prefHeight="31.0" prefWidth="85.0" text="Login"
-                    styleClass="login-button">
+            <PasswordField layoutX="116.0" layoutY="186.0" prefHeight="25.0" prefWidth="155.0" promptText="User name" styleClass="input-field" />
+            <TextField layoutX="116.0" layoutY="248.0" prefHeight="25.0" prefWidth="152.0" promptText="Password" styleClass="input-field" />
+            <FontAwesomeIconView glyphName="USER" layoutX="83.0" layoutY="209.0" size="20" styleClass="icon-user" />
+            <FontAwesomeIconView glyphName="KEY" layoutX="82.0" layoutY="271.0" size="20" styleClass="icon-key" />
+            <Button layoutX="140.0" layoutY="342.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="85.0" styleClass="login-button" text="Login">
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Hyperlink layoutX="121.0" layoutY="440.0" text="Esqueceu a senha?"/>
-            <FontAwesomeIconView glyphName="USERS" layoutX="155.0" layoutY="87.0" size="35"
-                                 styleClass="icon-users"/>
-            <Text fill="#008e9d" layoutX="157.0" layoutY="135.0" strokeType="OUTSIDE"
-                  strokeWidth="0.0" text="Login">
+            <Hyperlink layoutX="121.0" layoutY="440.0" text="Novo? Registre-se" />
+            <FontAwesomeIconView glyphName="USERS" layoutX="155.0" layoutY="87.0" size="35" styleClass="icon-users" />
+            <Text fill="#008e9d" layoutX="142.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="63.80419921875">
                <font>
-                  <Font size="15.0"/>
+                  <Font size="24.0" />
                </font>
             </Text>
          </children>
