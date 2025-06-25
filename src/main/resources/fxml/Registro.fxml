@@ -14,7 +14,7 @@
 <BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@login.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lpn3.licitamatch.controller.RegistroController">
 
    <left>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0" styleClass="left-pane" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="331.0" styleClass="left-pane" BorderPane.alignment="CENTER">
          <children>
             <FontAwesomeIconView glyphName="USER_PLUS" layoutX="133.0" layoutY="131.0" size="70" styleClass="icon-envelope" />
             <Text layoutX="41.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crie sua conta para usar o sistema" textAlignment="CENTER" wrappingWidth="268.8">
@@ -27,7 +27,7 @@
    </left>
 
    <right>
-      <AnchorPane prefHeight="500.0" prefWidth="358.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="500.0" prefWidth="363.0" BorderPane.alignment="CENTER">
          <children>
             <!-- Campo Usuário -->
             <FontAwesomeIconView glyphName="USER" layoutX="83.0" layoutY="170.0" size="20" styleClass="icon-user" />
