@@ -1,5 +1,6 @@
-package com.lpn3.licitamatch.controller;
+package com.lpn3.licitamatch.view;
 
+import com.lpn3.licitamatch.controller.APIConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

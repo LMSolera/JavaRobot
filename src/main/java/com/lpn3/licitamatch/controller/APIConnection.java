@@ -22,7 +22,7 @@ public class APIConnection {
     static String dadosLicitacao;
     
     public static void compararDocumentos(File arquivoProposta, File arquivoLicitacao) {
-        String openRouterApiKey = "Chave";
+        String openRouterApiKey = "chave";
         
         String openRouterApiUrl = "https://openrouter.ai/api/v1/chat/completions";
         

@@ -1,4 +1,4 @@
-package com.lpn3.licitamatch.controller;
+package com.lpn3.licitamatch.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
