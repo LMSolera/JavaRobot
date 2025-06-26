@@ -104,6 +104,8 @@ public class UploadController implements Initializable {
         // Chamar o metodo que envia os arquivos para IA e etc
         labelResultado.setText("Comparação simulada entre os arquivos:\n" +
                 file1.getName() + " e " + file2.getName());
+        
+        APIConnection.compararDocumentos(file1, file2);
     }
 
     private void showAlert(Alert.AlertType tipo, String titulo, String mensagem) {
