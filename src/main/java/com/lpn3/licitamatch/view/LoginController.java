@@ -1,7 +1,7 @@
 package com.lpn3.licitamatch.view;
-
 import com.lpn3.licitamatch.model.Usuario;
 import com.lpn3.licitamatch.service.UsuarioService; 
+import com.lpn3.licitamatch.session.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +38,7 @@ public class LoginController {
             mostrarAlerta("Email inválido", "Digite um email válido.");
             return;
         }
-
+        
         // 2. Lógica de Autenticação (usando o Service)
         try {
             // Chama o serviço para tentar autenticar o usuário.
@@ -47,6 +47,7 @@ public class LoginController {
             // 3. Verifica o resultado da autenticação
             if (usuarioAutenticado.isPresent()) {
                 // O usuário existe e a senha está correta.
+                UserSession.getInstance().setLoggedInUser(usuarioAutenticado.get());
                 mostrarAlerta("Login bem-sucedido", "Bem-vindo, " + usuarioAutenticado.get().getNome() + "!");
                 redirecionarParaUpload(event); // Redireciona para a próxima tela
             } else {

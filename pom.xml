@@ -75,20 +75,20 @@
 
     <dependencies>
         
-    <!-- Adicione esta dependência para criptografia de senhas com BCrypt -->
-    <dependency>
-        <groupId>org.mindrot</groupId>
-        <artifactId>jbcrypt</artifactId>
-        <version>0.4</version>
-    </dependency>
+        <!-- Adicione esta dependência para criptografia de senhas com BCrypt -->
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>0.4</version>
+        </dependency>
     
     
-<!-- emoji    
-    <dependency>
-        <groupId>de.jensd</groupId>
-        <artifactId>fontawesomefx</artifactId>
-        <version>8.9</version>
-    </dependency>-->
+        <!-- emoji    
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx</artifactId>
+            <version>8.9</version>
+        </dependency>-->
 
         <!-- Selenium -->
         <dependency>
@@ -201,27 +201,27 @@
         </dependency>
       
         <dependency>  
-           <groupId>org.apache.pdfbox</groupId> 
-           <artifactId>jempbox</artifactId> 
-           <version>1.8.11</version> 
+            <groupId>org.apache.pdfbox</groupId> 
+            <artifactId>jempbox</artifactId> 
+            <version>1.8.11</version> 
         </dependency> 
 
         <dependency>
-           <groupId>org.apache.pdfbox</groupId> 
-           <artifactId>xmpbox</artifactId> 
-           <version>2.0.34</version> 
+            <groupId>org.apache.pdfbox</groupId> 
+            <artifactId>xmpbox</artifactId> 
+            <version>2.0.34</version> 
         </dependency> 
 
         <dependency> 
-           <groupId>org.apache.pdfbox</groupId> 
-           <artifactId>preflight</artifactId> 
-           <version>2.0.34</version> 
+            <groupId>org.apache.pdfbox</groupId> 
+            <artifactId>preflight</artifactId> 
+            <version>2.0.34</version> 
         </dependency> 
 
         <dependency> 
-           <groupId>org.apache.pdfbox</groupId> 
-           <artifactId>pdfbox-tools</artifactId> 
-           <version>2.0.34</version> 
+            <groupId>org.apache.pdfbox</groupId> 
+            <artifactId>pdfbox-tools</artifactId> 
+            <version>2.0.34</version> 
         </dependency>
         
         
@@ -259,11 +259,11 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-    <dependency>
-        <groupId>com.mysql</groupId>
-        <artifactId>mysql-connector-j</artifactId>
-        <version>8.0.33</version> <!-- 8.x.x é a versão moderna e recomendada -->
-    </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version> <!-- 8.x.x é a versão moderna e recomendada -->
+        </dependency>
         <!-- JavaFX -->
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -284,7 +284,7 @@
 
     <build>
         <plugins>
-<!--             Executa a aplicação com "mvn exec:java" -->
+            <!--             Executa a aplicação com "mvn exec:java" -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -294,7 +294,7 @@
                 </configuration>
             </plugin>
             
-<!--            <plugin>
+            <!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.1</version>
