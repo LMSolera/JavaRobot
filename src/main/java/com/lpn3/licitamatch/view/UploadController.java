@@ -1,6 +1,9 @@
 package com.lpn3.licitamatch.view;
 
+import com.lpn3.licitamatch.model.Licitacao;
+import com.lpn3.licitamatch.model.Proposta;
 import com.lpn3.licitamatch.model.Usuario;
+import com.lpn3.licitamatch.service.ComparacaoService;
 import com.lpn3.licitamatch.service.LicitacaoService;
 import com.lpn3.licitamatch.service.PropostaService; // Importa o serviço de Proposta
 import com.lpn3.licitamatch.session.UserSession;
@@ -25,62 +28,43 @@ public class UploadController {
     @FXML private Label labelLicitacao;
     @FXML private Label labelResultado;
 
-    private File arquivoProposta;
-    private File arquivoLicitacao;
+    private Proposta propostaSalva;
+    private Licitacao licitacaoSalva;
 
-    // Instancia os serviços necessários.
     private final LicitacaoService licitacaoService = new LicitacaoService();
-    private final PropostaService propostaService = new PropostaService(); // Instancia o serviço de Proposta
+    private final PropostaService propostaService = new PropostaService();
+    private final ComparacaoService comparacaoService = new ComparacaoService();
+
 
     @FXML
     private void selecionarArquivoLicitacao(ActionEvent event) {
         File arquivo = escolherArquivoPDF("Selecionar Arquivo de Licitação");
-        
         if (arquivo != null) {
             try {
-                // 1. Pega o usuário que está logado a partir da sessão.
                 Usuario usuarioLogado = UserSession.getInstance().getLoggedInUser();
-                
-                // 2. Chama o serviço para orquestrar o salvamento.
-                licitacaoService.salvarNovaLicitacao(usuarioLogado, arquivo);
-                
-                // 3. Atualiza a interface se tudo deu certo.
-                this.arquivoLicitacao = arquivo;
+                // Salva o objeto retornado pelo serviço.
+                this.licitacaoSalva = licitacaoService.salvarNovaLicitacao(usuarioLogado, arquivo);
                 labelLicitacao.setText(arquivo.getName());
-                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Arquivo de Licitação salvo no banco de dados!");
-
-            } catch (IOException e) {
-                showAlert(Alert.AlertType.ERROR, "Erro de Arquivo", "Não foi possível ler o arquivo selecionado.");
-                e.printStackTrace();
-            } catch (RuntimeException e) {
-                showAlert(Alert.AlertType.ERROR, "Erro de Sistema", e.getMessage());
+                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Licitação salva com ID: " + licitacaoSalva.getId());
+            } catch (Exception e) {
+                showAlert(Alert.AlertType.ERROR, "Erro", "Não foi possível salvar a licitação: " + e.getMessage());
                 e.printStackTrace();
             }
         }
     }
-
+    
     @FXML
     private void selecionarArquivoProposta(ActionEvent event) {
         File arquivo = escolherArquivoPDF("Selecionar Arquivo de Proposta");
-        
         if (arquivo != null) {
             try {
-                // 1. Pega o usuário que está logado.
                 Usuario usuarioLogado = UserSession.getInstance().getLoggedInUser();
-                
-                // 2. Chama o serviço de PROPOSTA para salvar o arquivo.
-                propostaService.salvarNovaProposta(usuarioLogado, arquivo);
-                
-                // 3. Atualiza a interface.
-                this.arquivoProposta = arquivo;
+                // Salva o objeto retornado pelo serviço.
+                this.propostaSalva = propostaService.salvarNovaProposta(usuarioLogado, arquivo);
                 labelProposta.setText(arquivo.getName());
-                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Arquivo de Proposta salvo no banco de dados!");
-
-            } catch (IOException e) {
-                showAlert(Alert.AlertType.ERROR, "Erro de Arquivo", "Não foi possível ler o arquivo selecionado.");
-                e.printStackTrace();
-            } catch (RuntimeException e) {
-                showAlert(Alert.AlertType.ERROR, "Erro de Sistema", e.getMessage());
+                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Proposta salva com ID: " + propostaSalva.getId());
+            } catch (Exception e) {
+                showAlert(Alert.AlertType.ERROR, "Erro", "Não foi possível salvar a proposta: " + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -88,13 +72,25 @@ public class UploadController {
 
     @FXML
     private void compararArquivos(ActionEvent event) {
-        if (arquivoLicitacao == null || arquivoProposta == null) {
-            showAlert(Alert.AlertType.WARNING, "Atenção", "Selecione ambos os arquivos antes de comparar.");
+        if (licitacaoSalva == null || propostaSalva == null) {
+            showAlert(Alert.AlertType.WARNING, "Atenção", "É necessário salvar uma Licitação e uma Proposta antes de comparar.");
             return;
         }
-        // Sua lógica de comparação aqui...
-        labelResultado.setText("Comparação entre:\n" + arquivoLicitacao.getName() + "\n" + arquivoProposta.getName());
+
+        try {
+            // Chama o serviço para realizar a comparação e salvar o resultado.
+            Comparacao resultado = comparacaoService.realizarComparacao(licitacaoSalva, propostaSalva);
+            
+            // Atualiza a interface com a nota do resultado.
+            labelResultado.setText("Comparação realizada com sucesso! Nota: " + resultado.getNota() + "%");
+            showAlert(Alert.AlertType.INFORMATION, "Comparação Concluída", "O resultado foi salvo no banco de dados.");
+
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Erro", "Ocorreu um erro ao realizar a comparação: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
     
     /**
      * Método auxiliar para abrir o FileChooser e evitar repetição de código.

@@ -19,7 +19,7 @@ public class LicitacaoService {
         this.licitacaoDAO = new LicitacaoDAOImpl();
     }
 
-    public void salvarNovaLicitacao(Usuario usuarioLogado, File arquivoSelecionado) throws IOException {
+    public Licitacao salvarNovaLicitacao(Usuario usuarioLogado, File arquivoSelecionado) throws IOException {
         // 1. REGRA DE NEGÓCIO: Validar se o usuário está logado.
         if (usuarioLogado == null) {
             throw new RuntimeException("Nenhum usuário logado. Ação de upload não permitida.");
@@ -36,7 +36,7 @@ public class LicitacaoService {
         novaLicitacao.setArquivoPdf(conteudoPdf);
 
         // 4. Chamar a camada DAO para persistir o objeto no banco de dados.
-        licitacaoDAO.salvar(novaLicitacao);
+        return licitacaoDAO.salvar(novaLicitacao); 
     }
 
 }
