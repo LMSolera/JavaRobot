@@ -25,7 +25,7 @@ public class APIConnection {
     static String dadosLicitacao;
     
     public static Comparacao compararDocumentos(Proposta arquivoProposta, Licitacao arquivoLicitacao) {
-        String openRouterApiKey = "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";
+        String openRouterApiKey = "chave";
         
         String openRouterApiUrl = "https://openrouter.ai/api/v1/chat/completions";
         
