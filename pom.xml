@@ -75,11 +75,20 @@
 
     <dependencies>
         
+    <!-- Adicione esta dependência para criptografia de senhas com BCrypt -->
+    <dependency>
+        <groupId>org.mindrot</groupId>
+        <artifactId>jbcrypt</artifactId>
+        <version>0.4</version>
+    </dependency>
+    
+    
+<!-- emoji    
     <dependency>
         <groupId>de.jensd</groupId>
         <artifactId>fontawesomefx</artifactId>
         <version>8.9</version>
-    </dependency>
+    </dependency>-->
 
         <!-- Selenium -->
         <dependency>
