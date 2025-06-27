@@ -25,10 +25,10 @@
             <url>https://github.com/henrique</url>
         </developer>
         <developer>
-            <id>HT3036995</id>
+            <id>HT3037509</id>
             <name>Luis</name>
-            <email>hcduarte200@gmail.com</email>
-            <url>https://github.com/henrique</url>
+            <email>lumi.solera@gmail.com</email>
+            <url>https://github.com/LMSolera</url>
         </developer>
     </developers>
 
@@ -294,7 +294,7 @@
                 </configuration>
             </plugin>
             
-            <!--            <plugin>
+            <!--<plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.1</version>
