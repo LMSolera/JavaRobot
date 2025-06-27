@@ -1,5 +1,6 @@
 package com.lpn3.licitamatch.model;
 
+import java.io.File;
 import java.time.LocalDateTime;
 
 /**
@@ -11,6 +12,7 @@ public class Proposta {
     private int idUsuarioFk;
     private String nomeArquivo;
     private byte[] arquivoPdf;
+    private File filePdf;
     private LocalDateTime dataEnvio;
 
     public Proposta() {}
@@ -23,6 +25,8 @@ public class Proposta {
     public void setNomeArquivo(String nomeArquivo) { this.nomeArquivo = nomeArquivo; }
     public byte[] getArquivoPdf() { return arquivoPdf; }
     public void setArquivoPdf(byte[] arquivoPdf) { this.arquivoPdf = arquivoPdf; }
+    public File getFilePdf() {return filePdf;}
+    public void setFilePdf(File filePdf) {this.filePdf = filePdf;}
     public LocalDateTime getDataEnvio() { return dataEnvio; }
     public void setDataEnvio(LocalDateTime dataEnvio) { this.dataEnvio = dataEnvio; }
 }
