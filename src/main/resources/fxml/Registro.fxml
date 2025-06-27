@@ -14,7 +14,7 @@
 <BorderPane prefHeight="500.0" prefWidth="700.0" 
             xmlns="http://javafx.com/javafx/23.0.1" 
             xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="com.lpn3.licitamatch.controller.RegistroController">
+            fx:controller="com.lpn3.licitamatch.view.RegistroController">
 
    <left>
       <AnchorPane prefHeight="500.0" prefWidth="331.0" styleClass="left-pane" BorderPane.alignment="CENTER">
