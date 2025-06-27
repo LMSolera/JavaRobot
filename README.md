@@ -18,6 +18,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Escolha e modelamento do banco de dados
 - [x] implementação do banco
 - [x] Utilização da IA para as devidas comparações
+- [ ] Mais coisas...
 
 ## 💻 Pré-requisitos
 
