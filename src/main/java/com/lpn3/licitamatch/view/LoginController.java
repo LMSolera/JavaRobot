@@ -69,7 +69,7 @@ public class LoginController {
     @FXML
     private void handleIrParaRegistro(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Register.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Registro.fxml"));
             Stage stage = (Stage) emailField.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Registro de Usuário");
