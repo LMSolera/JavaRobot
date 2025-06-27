@@ -40,7 +40,7 @@ CREATE TABLE `Comparacao` (
   `nota` TINYINT  NOT NULL CHECK (`nota` BETWEEN 0 AND 100),
   `data_comparacao` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-  PRIMARY KEY (`id_licitacao_fk`, `id_proposta_fk`),
+  -- PRIMARY KEY (`id_licitacao_fk`, `id_proposta_fk`),
 
   CONSTRAINT `fk_comparacao_licitacao`
     FOREIGN KEY (`id_licitacao_fk`) REFERENCES `Licitacao`(`id_licitacao`)
