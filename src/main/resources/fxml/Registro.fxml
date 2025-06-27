@@ -27,7 +27,7 @@
             <VBox alignment="CENTER" prefWidth="100.0" spacing="15.0">
                <children>
                   <TextField fx:id="usernameField" maxWidth="250.0" prefHeight="40.0" promptText="Nome completo" styleClass="input-field" />
-                  <TextField fx:id="emailField maxWidth" maxWidth="250.0" prefHeight="40.0" promptText="Email" styleClass="input-field" />
+                  <TextField fx:id="emailField" maxWidth="250.0" prefHeight="40.0" promptText="Email" styleClass="input-field" />
                   <PasswordField fx:id="passwordField" maxWidth="250.0" prefHeight="40.0" promptText="Senha (mín. 8 caracteres)" styleClass="input-field" />
                   <PasswordField fx:id="confirmPasswordField" maxWidth="250.0" prefHeight="40.0" promptText="Confirmar Senha" styleClass="input-field" />
                </children>
@@ -42,7 +42,7 @@
                </cursor>
             </Button>
             
-            <Hyperlink fx:id="goToLoginLink" onAction="#goToLogin" text="Já tem uma conta? Faça o login" />
+            <Hyperlink fx:id="goToLoginLink" onAction="#goToLoginLink" text="Já tem uma conta? Faça o login" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
