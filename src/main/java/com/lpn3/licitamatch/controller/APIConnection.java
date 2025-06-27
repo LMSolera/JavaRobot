@@ -1,6 +1,9 @@
 package com.lpn3.licitamatch.controller;
 
 import com.google.gson.Gson;
+import com.lpn3.licitamatch.model.Comparacao;
+import com.lpn3.licitamatch.model.Licitacao;
+import com.lpn3.licitamatch.model.Proposta;
 
 import java.io.File;
 import java.net.URI;
@@ -21,13 +24,13 @@ public class APIConnection {
     static String dadosProposta;
     static String dadosLicitacao;
     
-    public static void compararDocumentos(File arquivoProposta, File arquivoLicitacao) {
-        String openRouterApiKey = "chave";
+    public static Comparacao compararDocumentos(Proposta arquivoProposta, Licitacao arquivoLicitacao) {
+        String openRouterApiKey = "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";
         
         String openRouterApiUrl = "https://openrouter.ai/api/v1/chat/completions";
         
-        proposta = arquivoProposta;
-        licitacao = arquivoLicitacao;
+        proposta = arquivoProposta.getFilePdf();
+        licitacao = arquivoLicitacao.getFilePdf();
         
         try {
             PDDocument documentoProposta;
@@ -58,21 +61,29 @@ public class APIConnection {
             {"role": "system", "content": "Você tem como objetivo comparar documentos de maneira crítica e analítica"},
             {"role": "user", "content": 
                                  "Com base nessa licitação:
-                                 """ + dadosLicitacao + """                             
-                                 Realize a análise da seguinte proposta:
-                                 """ + dadosProposta + """                       
-                                 Ao final da análise, você deve avaliar a proposta trazendo as seguintes explicações:
-                                    Características Similares:
-                                    Características Diferentes:
-                                    Nota de análise de 0 - 10:
-                                 A nota deve considerar tais características:
-                                    0 - 3 : Com base nas diferenças de custo.
-                                    0 - 3 : Com base nas diferenças de produto esperado, e produto ofertado.
-                                    0 - 2 : Com base na data de entrega esperada e data de entrega ofertada.
-                                    0 - 2 : Com base na estrutura da proposta.                                          
-                                 "}
+                                
+                                 """ + dadosLicitacao + """
+                                                        
+                                                        
+                                                        
+                                 Realize uma simples análise da seguinte proposta:
+                                
+                                 """ + dadosProposta + """   
+                                                       
+                                                       
+                                                                                                        
+                                 Sua resposta deve conter dois textos (Semelhanças e Diferenças) e uma nota (0 a 100), que deve considerar tais características:
+                                    0 - 30 : Com base nas diferenças de custo.
+                                    0 - 30 : Com base nas diferenças de produto esperado, e produto ofertado.
+                                    0 - 20 : Com base na data de entrega esperada e data de entrega ofertada.
+                                    0 - 20 : Com base na estrutura da proposta.                                          
+                                 Todas essas informações devem estar organizadas em formato JSON, com os seguintes objetos:
+                                    semelhancas: (Um TEXTO explicando as semelhanças)
+                                    diferencas: (Um TEXTO explicado as diferenças)
+                                    nota: (Valor de 0 a 100)
+                                 Sua resposta deve conter SOMENTE o conteúdo do arquivo JSON que não deve ultrapassar 1000 caracteres."}
           ],
-          "max_tokens": 5000,
+          "max_tokens": 2000,
           "temperature": 0.7
         }
         """;
@@ -110,26 +121,58 @@ public class APIConnection {
                 Gson gson = new Gson();
                 
                 Map<?, ?> mapaRespostaCompleta = gson.fromJson(jsonString, Map.class);
-                               
+                
+                String conteudoRespostaJson = "";
                 for (Map.Entry<?, ?> entry : mapaRespostaCompleta.entrySet()) {
                     if (entry.getKey().toString().equals("choices")) {
                         String[] conteudo = entry.getValue().toString().split("content=");
                         conteudo = conteudo[1].split("Caracteres:");
                         conteudo = conteudo[0].split(", refusal=null");
-                        System.out.println("Resposta: \n" + conteudo[0]);
+                        conteudoRespostaJson = conteudo[0];
                         conteudo = conteudo[1].split("reasoning=");
                         conteudo = conteudo[1].split("}}]");
-                        System.out.println("\nRaciocínio: \n" + conteudo[0]);
                     }
                 }
                 
+                System.out.println(conteudoRespostaJson);
+                conteudoRespostaJson = conteudoRespostaJson.replace("```json", "");
+                conteudoRespostaJson = conteudoRespostaJson.replace("```", "");
+                System.out.println(conteudoRespostaJson);
+                
+                Map<?, ?> mapaRespostaJson = gson.fromJson(conteudoRespostaJson, Map.class);
+                
+                String semelhanca;
+                String diferenca;
+                float nota;
+                
+                int contador = 0;
+                String[] temp = new String[mapaRespostaJson.size()];
+                for (Map.Entry<?, ?> entry : mapaRespostaJson.entrySet()) {
+                    temp[contador] = entry.toString().split("=")[1];
+                    contador++;
+                }
+                
+                semelhanca = temp[0];
+                diferenca = temp[1];
+                nota = Float.parseFloat(temp[2]);
+                
+                System.out.println(semelhanca + "\n");
+                System.out.println(diferenca + "\n");
+                System.out.println(nota + "\n");
+                
+                Comparacao tempComp = new Comparacao();
+                tempComp.setTxtSemelhanca(semelhanca);
+                tempComp.setTxtDiferenca(diferenca);
+                tempComp.setNota((int)nota);
+                return tempComp;
             } else {
-                System.err.println("Erro na requisição."); 
+                System.err.println("Erro na requisição.");
+                return null;
             }
-
         } catch (IOException | InterruptedException e) {
             System.err.println("Erro ao enviar a requisição HTTP para OpenRouter: " + e.getMessage());
             e.printStackTrace();
+            return null;
         }
     }
 }
