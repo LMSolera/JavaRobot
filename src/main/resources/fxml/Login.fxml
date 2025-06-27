@@ -7,47 +7,60 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<!-- Usamos um AnchorPane como raiz para aplicar um fundo em toda a tela -->
-<AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="root" stylesheets="login.css" 
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="com.lpn3.licitamatch.view.LoginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@/styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lpn3.licitamatch.view.LoginController">
    <children>
-      <!-- VBox centraliza todo o conteúdo do formulário -->
-      <VBox alignment="CENTER" layoutX="175.0" layoutY="50.0" prefHeight="400.0" prefWidth="350.0" spacing="20.0" styleClass="form-container" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="50.0">
+      <!-- Cabeçalho Consistente com a Tela de Upload -->
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="800.0" spacing="20.0" styleClass="header-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text styleClass="header-text" text="Bem-Vindo de Volta!">
-               <font>
-                  <Font name="System Bold" size="28.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sub-header-text" text="Faça login para continuar" />
-            
-            <!-- Campos de entrada com um espaçamento maior -->
-            <VBox alignment="CENTER" prefWidth="100.0" spacing="15.0">
-               <children>
-                  <TextField fx:id="emailField" maxWidth="250.0" prefHeight="40.0" promptText="Email" styleClass="input-field" />
-                  <PasswordField fx:id="senhaField" maxWidth="250.0" prefHeight="40.0" promptText="Senha" styleClass="input-field" />
-               </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </VBox>
-            
-            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="40.0" prefWidth="250.0" styleClass="login-button" text="LOGIN">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            
-            <Hyperlink fx:id="linkRegistro" onAction="#handleIrParaRegistro" text="Não tem uma conta? Registre-se" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-title" text="LiciMatch" />
          </children>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets left="20.0" right="20.0" />
          </padding>
+      </HBox>
+
+      <!-- Conteúdo Principal Centralizado -->
+      <VBox alignment="CENTER" layoutY="60.0" prefHeight="540.0" prefWidth="800.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <!-- Cartão do Formulário de Login -->
+            <VBox alignment="CENTER" maxWidth="400.0" spacing="20.0" styleClass="form-card">
+               <padding>
+                  <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+               </padding>
+               <children>
+                  <Text styleClass="card-title-text" text="Bem-Vindo de Volta!">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sub-header-text" text="Faça login para continuar" />
+                  
+                  <!-- Campos de Entrada -->
+                  <VBox alignment="CENTER" prefWidth="100.0" spacing="15.0">
+                     <children>
+                        <TextField fx:id="emailField" prefHeight="40.0" promptText="Email" styleClass="input-field" />
+                        <PasswordField fx:id="senhaField" prefHeight="40.0" promptText="Senha" styleClass="input-field" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="45.0" prefWidth="320.0" styleClass="action-button" text="LOGIN">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  
+                  <Hyperlink fx:id="linkRegistro" onAction="#handleIrParaRegistro" text="Não tem uma conta? Registre-se" />
+               </children>
+            </VBox>
+         </children>
       </VBox>
    </children>
 </AnchorPane>

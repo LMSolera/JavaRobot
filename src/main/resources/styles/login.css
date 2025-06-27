@@ -1,25 +1,41 @@
 .root {
+    /* MANTIDO: O fundo com gradiente que você gostou */
     -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #B2EBF2, #80DEEA);
 }
 
-/* Container do formulário */
-.form-container {
-    -fx-background-color: white;
-    -fx-background-radius: 15px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0.5, 0, 10);
+/* --- Cabeçalho (da nova estrutura) --- */
+.header-bar {
+    -fx-background-color: transparent; /* Deixei o cabeçalho transparente para o gradiente aparecer */
 }
 
-/* Estilo do texto principal */
-.header-text {
-    -fx-fill: #00796B; /* Um tom de verde-azulado mais escuro */
-    -fx-font-family: "Arial Bold";
+.header-title {
+    -fx-font-size: 1.8em; /* Aumentei um pouco para mais destaque */
+    -fx-font-weight: bold;
+    -fx-fill: #004D40; /* Cor escura para contrastar com o fundo claro */
+    -fx-effect: dropshadow(three-pass-box, rgba(255,255,255,0.4), 2, 0, 0, 2); /* Sombra clara para legibilidade */
+}
+
+/* --- Cartão do Formulário (da nova estrutura) --- */
+.form-card {
+    -fx-background-color: rgba(255, 255, 255, 0.85); /* Fundo branco semitransparente */
+    -fx-background-radius: 15px;
+    -fx-border-color: white;
+    -fx-border-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 20, 0.5, 0, 15); /* Sombra mais pronunciada */
+}
+
+/* --- Textos do Formulário --- */
+.card-title-text {
+    -fx-fill: #00796B; /* Verde escuro */
+    -fx-font-family: "System Bold";
 }
 
 .sub-header-text {
     -fx-fill: #555555;
+    -fx-font-size: 1.1em;
 }
 
-/* Estilo dos campos de entrada */
+/* --- Campos de Entrada --- */
 .input-field {
     -fx-background-color: #F0F4F8;
     -fx-background-radius: 8px;
@@ -29,28 +45,27 @@
     -fx-prompt-text-fill: #90A4AE;
 }
 
-/* Efeito de foco nos campos de entrada */
 .input-field:focused {
     -fx-border-color: #00796B;
     -fx-border-width: 2px;
 }
 
-/* Estilo do botão de login */
-.login-button {
-    -fx-background-color: #008e9d;
+/* --- Botão de Ação Principal (usando a classe do FXML novo) --- */
+.action-button {
+    -fx-background-color: #008e9d; /* Cor do botão do seu CSS original */
     -fx-text-fill: white;
-    -fx-font-size: 14px;
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
+    -fx-padding: 10px 20px;
 }
 
-/* Efeito de hover no botão */
-.login-button:hover {
-    -fx-background-color: #006064;
+.action-button:hover {
+    -fx-background-color: #006064; /* Efeito hover do seu CSS original */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);
 }
 
-/* Estilo do link de registro */
+/* --- Hyperlink --- */
 .hyperlink {
     -fx-text-fill: #00796B;
     -fx-border-color: transparent;
