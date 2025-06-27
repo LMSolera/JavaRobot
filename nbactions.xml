@@ -6,13 +6,13 @@
                 <packaging>jar</packaging>
             </packagings>
             <goals>
-                <goal>process-classes</goal>
-                <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
+                <goal>compile</goal>
+                <goal>javafx:run</goal>
             </goals>
             <properties>
                 <exec.vmArgs></exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
-                <exec.appArgs>mvn compile javafx:run</exec.appArgs>
+                <exec.appArgs></exec.appArgs>
                 <exec.mainClass>com.lpn3.licitamatch.application.Main</exec.mainClass>
                 <exec.executable>java</exec.executable>
             </properties>
@@ -27,9 +27,9 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
             </goals>
             <properties>
-                <exec.vmArgs>-Dstdout.encoding=UTF-8 -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
-                <exec.appArgs>mvn compile javafx:run</exec.appArgs>
+                <exec.appArgs></exec.appArgs>
                 <exec.mainClass>com.lpn3.licitamatch.application.Main</exec.mainClass>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
@@ -49,7 +49,7 @@
                 <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.mainClass>com.lpn3.licitamatch.application.Main</exec.mainClass>
                 <exec.executable>java</exec.executable>
-                <exec.appArgs>mvn compile javafx:run</exec.appArgs>
+                <exec.appArgs></exec.appArgs>
             </properties>
         </action>
     </actions>
