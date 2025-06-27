@@ -4,19 +4,8 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/LMSolera/SCdL?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/LMSolera/SCdL?style=for-the-badge)
 
-<p align="center"><img src="https://github.com/user-attachments/assets/0b27f4c9-11f9-44e1-af3d-dbd4f5edea2a" width="600"/><br>
-<img src="https://github.com/user-attachments/assets/f1e8a63f-c50a-4a93-bed8-9217885b558a" width="400"/> <br>
-<img src = "https://github.com/user-attachments/assets/21fec1fc-df54-430c-9d5d-75307e4a0768"/></p>
-
-> Estado de protótipo de possíveis interfaces que podemos utilizar.
-
 > Esse projeto está sendo feito pensando na enorme burocracia que o sistema de licitações possui, levando em consideração todo o trabalho que já existe na criação de uma licitação, pensamos em um sistema onde o usuário irá colocar
 > a licitação da empresa e em seguida inserir os contratos de propostas, enviando tudo para uma IA realizar a comparação
-
-## Banco de dados
-<p align="center"><img src="https://github.com/user-attachments/assets/36da5309-08f0-4b83-966c-7fc95440bd30" width="600"/><br>
-  
-> Atualmente este é o nosso modelo de banco de dados
 
 ### Ajustes e melhorias
 
@@ -25,10 +14,10 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] Encontrar uma biblioteca open source para usar IA
 - [x] Criação da lógica de armazenamento de pdfs
 - [x] Criação das interfaces gráficas
-- [ ] Polimento das Interfaces Gráficas
+- [x] Polimento das Interfaces Gráficas
 - [x] Escolha e modelamento do banco de dados
-- [ ] implementação do banco
-- [ ] Utilização da IA para as devidas comparações
+- [x] implementação do banco
+- [x] Utilização da IA para as devidas comparações
 
 ## 💻 Pré-requisitos
 
