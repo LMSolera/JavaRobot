@@ -69,7 +69,7 @@ public class RegistroController {
             showAlert(Alert.AlertType.INFORMATION, "Registro bem-sucedido", "Conta criada com sucesso! Você já pode fazer o login.");
             limparCampos();
             
-            goToLogin(event);
+            goToLoginLink(event);
 
         } catch (RuntimeException e) {
             showAlert(Alert.AlertType.ERROR, "Erro de Registro", e.getMessage());
@@ -77,7 +77,7 @@ public class RegistroController {
     }
 
     @FXML 
-    private void goToLogin(ActionEvent event) {
+    private void goToLoginLink(ActionEvent event) {
         try {
             Parent loginRoot = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml")); 
             Scene loginScene = new Scene(loginRoot);
