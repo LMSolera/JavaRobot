@@ -21,38 +21,42 @@ public class LicitacaoDAOImpl implements LicitacaoDAO {
     }
 
     @Override
-    public Licitacao salvar(Licitacao licitacao) {
+    public Licitacao salvar(Licitacao licitacao) {      
+        // Query SQL para checar se já existe uma licitação com conteúdo e nome iguais no banco
+        String sqlCheck = "SELECT * FROM Licitacao WHERE arquivo_pdf = ? AND nome_arquivo = ?";       
+        try (PreparedStatement stmtCheck = conexao.prepareStatement(sqlCheck)) {         
+            stmtCheck.setBytes(1, licitacao.getArquivoPdf());
+            stmtCheck.setString(2, licitacao.getNomeArquivo());           
+            ResultSet resultado = stmtCheck.executeQuery();           
+            if (!resultado.next()) {
+                String sql = "INSERT INTO Licitacao (id_usuario_fk, nome_arquivo, arquivo_pdf, data_envio) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                    stmt.setInt(1, licitacao.getIdUsuarioFk());
+                    stmt.setString(2, licitacao.getNomeArquivo());
+                    stmt.setBytes(3, licitacao.getArquivoPdf());
+                    stmt.setTimestamp(4, Timestamp.valueOf(java.time.LocalDateTime.now()));
+                    int affectedRows = stmt.executeUpdate();
+                    if (affectedRows == 0) {
+                        throw new SQLException("A criação da licitação falhou, nenhuma linha foi afetada.");
+                    }
+                    try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                        if (generatedKeys.next()) {
+                            licitacao.setId(generatedKeys.getInt(1));
+                        } else {
+                            throw new SQLException("A criação da licitação falhou, nenhum ID foi obtido.");
+                        }
+                    }
 
-        // Query SQL para inserir a licitação. O ID é gerado automaticamente.
-        String sql = "INSERT INTO Licitacao (id_usuario_fk, nome_arquivo, arquivo_pdf, data_envio) VALUES (?, ?, ?, ?)";
-
-        try (PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
-            stmt.setInt(1, licitacao.getIdUsuarioFk());
-            stmt.setString(2, licitacao.getNomeArquivo());
-            // Usamos setBytes para inserir o conteúdo do arquivo PDF (que é um LONGBLOB no banco).
-            stmt.setBytes(3, licitacao.getArquivoPdf());
-            // Define a data de envio atual.
-            stmt.setTimestamp(4, Timestamp.valueOf(java.time.LocalDateTime.now()));
-
-            int affectedRows = stmt.executeUpdate();
-
-            if (affectedRows == 0) {
-                throw new SQLException("A criação da licitação falhou, nenhuma linha foi afetada.");
-            }
-            // Recupera o ID gerado pelo banco para o novo registro.
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    licitacao.setId(generatedKeys.getInt(1));
-                } else {
-                    throw new SQLException("A criação da licitação falhou, nenhum ID foi obtido.");
+                } catch (SQLException e) {
+                    throw new RuntimeException("Erro ao salvar licitação no banco: " + e.getMessage(), e);
                 }
-            }
-
+            } else {
+                licitacao.setId(resultado.getInt(1));
+            }            
         } catch (SQLException e) {
-            // Lança uma exceção mais específica para a camada de serviço/controller tratar.
-            throw new RuntimeException("Erro ao salvar licitação no banco: " + e.getMessage(), e);
-        }
+            System.out.println("Erro ao buscar repetições no banco: " + e.getMessage());
+            e.printStackTrace();
+        }    
         return licitacao;
     }
 
