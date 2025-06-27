@@ -54,7 +54,7 @@
             </Button>
 
             <!-- Link para Login -->
-            <Hyperlink fx:id="goToLoginLink" layoutX="121.0" layoutY="440.0" text="Já tem conta? Login" />
+            <Hyperlink fx:id="goToLoginLink" layoutX="121.0" layoutY="440.0" onAction="#goToLoginLink" text="Já tem conta? Login" />
 
             <!-- Título -->
 <!--            <FontAwesomeIconView glyphName="USERS" layoutX="164.0" layoutY="82.0" size="35" styleClass="icon-users" />-->
