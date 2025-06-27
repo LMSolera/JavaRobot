@@ -15,7 +15,7 @@ public class PropostaService {
         this.propostaDAO = new PropostaDAOImpl();
     }
 
-    public void salvarNovaProposta(Usuario usuarioLogado, File arquivoSelecionado) throws IOException {
+    public Proposta salvarNovaProposta(Usuario usuarioLogado, File arquivoSelecionado) throws IOException {
         if (usuarioLogado == null) {
             throw new RuntimeException("Nenhum usuário logado. Ação não permitida.");
         }
@@ -26,6 +26,6 @@ public class PropostaService {
         novaProposta.setNomeArquivo(arquivoSelecionado.getName());
         novaProposta.setArquivoPdf(conteudoPdf);
 
-        propostaDAO.salvar(novaProposta);
+        return propostaDAO.salvar(novaProposta);
     }
 }
