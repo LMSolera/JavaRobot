@@ -1,5 +1,6 @@
 package com.lpn3.licitamatch.service;
 
+import com.lpn3.licitamatch.controller.APIConnection;
 import com.lpn3.licitamatch.dao.ComparacaoDAO;
 import com.lpn3.licitamatch.dao.ComparacaoDAOImpl;
 import com.lpn3.licitamatch.model.Comparacao;
@@ -14,12 +15,17 @@ public class ComparacaoService {
         this.comparacaoDAO = new ComparacaoDAOImpl();
     }
     
-    public Comparacao realizarComparacao(Licitacao licitacao, Proposta proposta) {
+    public Comparacao realizarComparacao(Proposta proposta, Licitacao licitacao) {
         // Aqui você chamaria sua APIConnection
-        String semelhancaSimulada = "Coloca o resultado";
-        String diferencaSimulada = "Coloca o resultado";
-        int notaSimulada = 85; 
-
+        Comparacao temp = APIConnection.compararDocumentos(proposta, licitacao);
+        if (temp == null) {
+            throw new NullPointerException("Comparação returnada como nulo, erro de processamento.");
+        }
+        
+        String semelhancaSimulada = temp.getTxtSemelhanca();
+        String diferencaSimulada = temp.getTxtDiferenca();
+        int notaSimulada = temp.getNota(); 
+        
         Comparacao resultado = new Comparacao();
         resultado.setIdLicitacaoFk(licitacao.getId());
         resultado.setIdPropostaFk(proposta.getId());
