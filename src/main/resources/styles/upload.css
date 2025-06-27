@@ -1,60 +1,83 @@
-/* Exemplo de styles.css */
-
-.main-container {
-    -fx-background-color: #f4f4f9; /* Um fundo suave */
+.root {
+    -fx-background-color: #F4F7F6; /* Um cinza bem claro para o fundo */
 }
 
-.title-label {
-    -fx-text-fill: #333333; /* Cor escura para o título */
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0.0, 0, 2); /* Sombra sutil */
+.header-bar {
+    -fx-background-color: #008e9d; /* O azul/verde principal da sua identidade visual */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
 }
 
-.file-input-grid {
-    /* Pode adicionar bordas, fundo, etc. ao grid se desejar */
+.header-title {
+    -fx-font-size: 1.5em; /* Equivalente a ~24px */
+    -fx-font-weight: bold;
+    -fx-fill: white;
 }
 
-.file-select-button {
-    -fx-background-color: #5cacee; /* Azul claro */
+.upload-card {
+    -fx-background-color: white;
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: #E0E0E0;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 5, 0, 0, 2);
+}
+
+.card-title {
+    -fx-font-size: 1.2em; /* Equivalente a ~18px */
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Cinza escuro para o texto */
+    -fx-padding: 0 0 10px 0; /* Espaçamento abaixo do título */
+}
+
+.upload-button {
+    -fx-background-color: #4DB6AC; /* Um tom de verde-água mais claro */
     -fx-text-fill: white;
+    -fx-font-weight: bold;
     -fx-background-radius: 5px;
     -fx-padding: 8px 15px;
 }
 
-.file-select-button:hover {
-    -fx-background-color: #4a8fd1; /* Azul um pouco mais escuro no hover */
+.upload-button:hover {
+    -fx-background-color: #26A69A; /* Um pouco mais escuro ao passar o mouse */
 }
 
-.file-path-label {
+.file-name-label {
+    -fx-font-size: 1.1em;
     -fx-text-fill: #555555;
-    -fx-background-color: #e9e9ed; /* Fundo sutil para o label do caminho */
-    -fx-padding: 5px 8px;
-    -fx-background-radius: 3px;
-}
-
-.action-button {
-    -fx-background-color: #4CAF50; /* Verde para ação primária */
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-radius: 5px;
-    -fx-padding: 10px 20px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0.0, 0, 3);
-}
-
-.action-button:hover {
-    -fx-background-color: #45a049; /* Verde mais escuro no hover */
-}
-
-.result-label {
-    -fx-text-fill: #2c3e50; /* Cor de texto para o resultado */
     -fx-font-style: italic;
 }
 
-/* Estilos para quando o resultado for um sucesso (exemplo) */
-.result-label.success {
-    -fx-text-fill: #27ae60; /* Verde */
+.compare-button {
+    -fx-background-color: #00796B; /* Um verde escuro e sóbrio para a ação principal */
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+    -fx-padding: 15px 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 4);
+    -fx-font-size: 16px;
 }
 
-/* Estilos para quando o resultado for um erro (exemplo) */
-.result-label.error {
-    -fx-text-fill: #c0392b; /* Vermelho */
+.compare-button:hover {
+    -fx-background-color: #004D40; /* Ainda mais escuro no hover */
+}
+
+.logout-button {
+    -fx-background-color: #E57373; /* Um vermelho mais suave */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 15px;
+}
+
+.logout-button:hover {
+    -fx-background-color: #d32f2f; /* Vermelho mais forte no hover */
+}
+
+.result-label {
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00796B; /* Cor de sucesso */
+    -fx-padding: 10px;
+    -fx-background-color: #E0F2F1; /* Fundo bem claro para destacar */
+    -fx-background-radius: 5px;
 }

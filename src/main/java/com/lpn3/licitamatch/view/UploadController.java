@@ -123,6 +123,23 @@ public class UploadController {
         return (Stage) labelLicitacao.getScene().getWindow();
     }
 
+    @FXML
+    private void handleLogout(ActionEvent event) {
+        // 1. Limpa os dados da sessão
+        UserSession.getInstance().clearSession();
+
+        // 2. Navega de volta para a tela de login
+        try {
+            Parent loginRoot = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml")); 
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(loginRoot));
+            stage.setTitle("Login");
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erro", "Não foi possível retornar à tela de login.");
+        }
+    }
     private void showAlert(Alert.AlertType tipo, String titulo, String mensagem) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);

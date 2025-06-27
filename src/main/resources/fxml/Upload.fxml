@@ -3,55 +3,86 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<GridPane xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="com.lpn3.licitamatch.view.UploadController"
-          
-          xmlns="http://javafx.com/javafx/17"
-          hgap="20" vgap="20" alignment="CENTER"
-          styleClass="main-container">
-    <padding>
-        <Insets top="30" right="30" bottom="30" left="30"/>
-    </padding>
-
-
-   <!-- Título principal -->
-   <Label text="Comparador de Arquivos" GridPane.columnSpan="2" styleClass="title-label">
-      <font>
-         <Font size="26.0"/>
-      </font>
-   </Label>
-
-   <!-- Seção do Arquivo 1 -->
-   <VBox spacing="8" GridPane.rowIndex="1">
-      <Label text="Arquivo 1:"/>
-      <HBox spacing="10" alignment="CENTER_LEFT">
-         <Button fx:id="botaoProposta" text="Selecionar Proposta"
-                 onAction="#selecionarArquivo1" styleClass="file-select-button"/>
-         <Label fx:id="labelProposta" text="Nenhum arquivo selecionado" styleClass="file-path-label"/>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@/styles/upload.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lpn3.licitamatch.view.UploadController">
+   <children>
+      <!-- Cabeçalho com Título e Botão de Logout -->
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="800.0" spacing="20.0" styleClass="header-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header-title" text="Portal de Análise de Documentos" />
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+               <children>
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#handleLogout" styleClass="logout-button" text="Deslogar" />
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
       </HBox>
-   </VBox>
+      
+      <!-- Conteúdo Principal -->
+      <VBox alignment="TOP_CENTER" layoutY="60.0" prefHeight="540.0" prefWidth="800.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         <padding>
+            <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+         </padding>
+         <children>
+            <!-- Cartão de Upload da Proposta -->
+            <VBox styleClass="upload-card">
+               <children>
+                  <Label styleClass="card-title" text="1. Enviar Proposta" />
+                  <HBox alignment="CENTER_LEFT" spacing="15.0">
+                     <children>
+                        <Button fx:id="botaoProposta" mnemonicParsing="false" onAction="#selecionarArquivoProposta" styleClass="upload-button" text="Selecionar Arquivo">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label fx:id="labelProposta" styleClass="file-name-label" text="Nenhum arquivo selecionado" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <!-- Cartão de Upload da Licitação -->
+            <VBox styleClass="upload-card">
+               <children>
+                  <Label styleClass="card-title" text="2. Enviar Licitação" />
+                  <HBox alignment="CENTER_LEFT" spacing="15.0">
+                     <children>
+                        <Button fx:id="botaoLicitacao" mnemonicParsing="false" onAction="#selecionarArquivoLicitacao" styleClass="upload-button" text="Selecionar Arquivo">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label fx:id="labelLicitacao" styleClass="file-name-label" text="Nenhum arquivo selecionado" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            
+            <Separator prefWidth="200.0" />
+            
+            <!-- Botão de Comparação -->
+            <Button fx:id="botaoComparar" mnemonicParsing="false" onAction="#compararArquivos" styleClass="compare-button" text="Analisar Documentos">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
 
-   <!-- Seção do Arquivo 2 -->
-   <VBox spacing="8" GridPane.rowIndex="2">
-      <Label text="Arquivo 2:"/>
-      <HBox spacing="10" alignment="CENTER_LEFT">
-         <Button fx:id="botaoLicitacao" text="Selecionar Licitação"
-                 onAction="#selecionarArquivo2" styleClass="file-select-button"/>
-         <Label fx:id="labelLicitacao" text="Nenhum arquivo selecionado" styleClass="file-path-label"/>
-      </HBox>
-   </VBox>
-
-   <!-- Botão Comparar -->
-   <Button fx:id="botaoComparar" text="Comparar"
-           onAction="#compararArquivos" GridPane.rowIndex="3"
-           styleClass="action-button"/>
-
-   <!-- Resultado -->
-   <Label fx:id="labelResultado" text="" wrapText="true" GridPane.rowIndex="4"
-          styleClass="result-label"/>
-</GridPane>
+            <!-- Label de Resultado (inicialmente invisível) -->
+            <Label fx:id="labelResultado" styleClass="result-label" text="" visible="false" wrapText="true" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

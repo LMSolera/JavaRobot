@@ -1,72 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>-->
-<?import javafx.scene.Cursor?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:controller="com.lpn3.licitamatch.view.LoginController"
-            prefHeight="500.0" prefWidth="700.0" 
-            xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1">
-           
-
-   <left>
-      <AnchorPane prefHeight="500.0" prefWidth="350.0" styleClass="left-pane" BorderPane.alignment="CENTER">
+<!-- Usamos um AnchorPane como raiz para aplicar um fundo em toda a tela -->
+<AnchorPane prefHeight="500.0" prefWidth="700.0" styleClass="root" stylesheets="login.css" 
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.lpn3.licitamatch.view.LoginController">
+   <children>
+      <!-- VBox centraliza todo o conteúdo do formulário -->
+      <VBox alignment="CENTER" layoutX="175.0" layoutY="50.0" prefHeight="400.0" prefWidth="350.0" spacing="20.0" styleClass="form-container" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="50.0">
          <children>
-<!--            <FontAwesomeIconView glyphName="ENVELOPE" layoutX="133.0" layoutY="131.0" size="70" styleClass="icon-envelope" wrappingWidth="13.3" />-->
-            <Text layoutX="41.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                  text="Sistema Comparativo de licitações e propostas" textAlignment="CENTER"
-                  wrappingWidth="268.80419921875">
+            <Text styleClass="header-text" text="Bem-Vindo de Volta!">
                <font>
-                  <Font size="21.0" />
+                  <Font name="System Bold" size="28.0" />
                </font>
             </Text>
-         </children>
-      </AnchorPane>
-   </left>
-
-   <right>
-      <AnchorPane prefHeight="500.0" prefWidth="358.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField fx:id="emailField" layoutX="116.0" layoutY="186.0"
-                       prefHeight="25.0" prefWidth="155.0" promptText="Email"
-                       styleClass="input-field" />
-
-            <PasswordField fx:id="senhaField" layoutX="116.0" layoutY="248.0"
-                           prefHeight="25.0" prefWidth="152.0" promptText="Password"
-                           styleClass="input-field" />
-
-<!--            <FontAwesomeIconView glyphName="USER" layoutX="83.0" layoutY="209.0" size="20" styleClass="icon-user" />
-            <FontAwesomeIconView glyphName="KEY" layoutX="82.0" layoutY="271.0" size="20" styleClass="icon-key" />-->
-
-            <Button fx:id="loginButton" layoutX="140.0" layoutY="342.0" mnemonicParsing="false"
-                    prefHeight="31.0" prefWidth="85.0" styleClass="login-button" text="Login"
-                    onAction="#handleLogin">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sub-header-text" text="Faça login para continuar" />
+            
+            <!-- Campos de entrada com um espaçamento maior -->
+            <VBox alignment="CENTER" prefWidth="100.0" spacing="15.0">
+               <children>
+                  <TextField fx:id="emailField" maxWidth="250.0" prefHeight="40.0" promptText="Email" styleClass="input-field" />
+                  <PasswordField fx:id="senhaField" maxWidth="250.0" prefHeight="40.0" promptText="Senha" styleClass="input-field" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </VBox>
+            
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefHeight="40.0" prefWidth="250.0" styleClass="login-button" text="LOGIN">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-
-            <Hyperlink fx:id="linkRegistro" layoutX="121.0" layoutY="440.0"
-                       text="Novo? Registre-se" onAction="#handleIrParaRegistro" />
-
-<!--            <FontAwesomeIconView glyphName="USERS" layoutX="155.0" layoutY="87.0" size="35" styleClass="icon-users" />-->
-
-            <Text fill="#008e9d" layoutX="142.0" layoutY="143.0"
-                  strokeType="OUTSIDE" strokeWidth="0.0" text="Login"
-                  wrappingWidth="63.80419921875">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
+            
+            <Hyperlink fx:id="linkRegistro" onAction="#handleIrParaRegistro" text="Não tem uma conta? Registre-se" />
          </children>
-      </AnchorPane>
-   </right>
-</BorderPane>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

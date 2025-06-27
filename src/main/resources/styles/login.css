@@ -1,32 +1,61 @@
-/* Pane da esquerda com fundo azul */
-.left-pane {
-    -fx-background-color: #008e9d;
+.root {
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #B2EBF2, #80DEEA);
 }
 
-/* Ícone azul escuro */
-.icon-envelope {
-    -fx-fill: #000454;
+/* Container do formulário */
+.form-container {
+    -fx-background-color: white;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0.5, 0, 10);
 }
 
-/* Ícones azul claro */
-.icon-user, .icon-key, .icon-users {
-    -fx-fill: #008e9d;
+/* Estilo do texto principal */
+.header-text {
+    -fx-fill: #00796B; /* Um tom de verde-azulado mais escuro */
+    -fx-font-family: "Arial Bold";
 }
 
-/* Ícone selecionado (extra para users) */
-.icon-users {
-    -fx-selection-fill: #c3a8a8;
+.sub-header-text {
+    -fx-fill: #555555;
 }
 
-/* Campo de entrada com borda inferior azul */
+/* Estilo dos campos de entrada */
 .input-field {
-    -fx-background-color: transparent;
-    -fx-border-color: #0598ff;
-    -fx-border-width: 0px 0px 2px 0px;
+    -fx-background-color: #F0F4F8;
+    -fx-background-radius: 8px;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #90A4AE;
 }
 
-/* Botão com bordas arredondadas */
+/* Efeito de foco nos campos de entrada */
+.input-field:focused {
+    -fx-border-color: #00796B;
+    -fx-border-width: 2px;
+}
+
+/* Estilo do botão de login */
 .login-button {
-    -fx-background-radius: 50px;
+    -fx-background-color: #008e9d;
     -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+}
+
+/* Efeito de hover no botão */
+.login-button:hover {
+    -fx-background-color: #006064;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 3);
+}
+
+/* Estilo do link de registro */
+.hyperlink {
+    -fx-text-fill: #00796B;
+    -fx-border-color: transparent;
+}
+
+.hyperlink:hover {
+    -fx-underline: true;
 }
