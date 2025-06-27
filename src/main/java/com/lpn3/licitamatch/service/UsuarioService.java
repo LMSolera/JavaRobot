@@ -30,7 +30,27 @@ public class UsuarioService {
         Usuario novoUsuario = new Usuario(nome, email);
         novoUsuario.setSenhaHash(senhaHash); // Define o hash seguro
 
-        // 4. Chamar o DAO para persistir o usuário no banco
+        // 4. Chamar o DAO para persistir   o usuário no banco
         return usuarioDAO.salvar(novoUsuario);
+    }
+    
+ 
+    public Optional<Usuario> autenticar(String email, String senha) {
+        // 1. Busca o usuário pelo e-mail no banco de dados.
+        Optional<Usuario> usuarioOpt = usuarioDAO.buscarPorEmail(email);
+
+        // 2. Verifica se o usuário foi encontrado.
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            // 3. Compara a senha fornecida com o hash salvo no banco.
+            // O método BCrypt.checkpw faz essa comparação de forma segura.
+            if (BCrypt.checkpw(senha, usuario.getSenhaHash())) {
+                // Se as senhas correspondem, o usuário está autenticado.
+                return usuarioOpt;
+            }
+        }
+
+        // Se o usuário não foi encontrado ou a senha está incorreta, retorna um Optional vazio.
+        return Optional.empty();
     }
 }
