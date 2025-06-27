@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<!--<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>-->
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -19,7 +19,7 @@
          <children>
             <VBox alignment="CENTER" layoutX="16.0" layoutY="148.0" prefHeight="200.0" prefWidth="268.0" spacing="10.0">
                <children>
-                  <FontAwesomeIconView fill="WHITE" glyphName="CHECK_CIRCLE" size="80" />
+<!--                  <FontAwesomeIconView fill="WHITE" glyphName="CHECK_CIRCLE" size="80" />-->
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Análise Concluída" textAlignment="CENTER" wrappingWidth="268.80419921875">
                      <font>
                         <Font name="System Bold" size="24.0" />

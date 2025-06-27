@@ -1,0 +1,48 @@
+.left-pane {
+    -fx-background-color: #008e9d;
+}
+
+.right-pane {
+    -fx-background-color: #FFFFFF;
+}
+
+.title-text {
+    -fx-fill: #333333;
+}
+
+.nota-indicator .percentage {
+    -fx-fill: transparent; /* Esconde o texto de porcentagem padrão */
+}
+
+/* Estilo para a barra de progresso do indicador */
+.nota-indicator .progress {
+    -fx-stroke: #008e9d;
+    -fx-stroke-width: 8px;
+}
+
+.nota-label {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+.titled-pane > .title {
+    -fx-background-color: #f0f0f0;
+    -fx-font-weight: bold;
+}
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: #f9f9f9;
+}
+
+.voltar-button {
+    -fx-background-color: #555555;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.voltar-button:hover {
+    -fx-background-color: #333333;
+}

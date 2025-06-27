@@ -1,5 +1,6 @@
 package com.lpn3.licitamatch.view;
 
+import com.lpn3.licitamatch.model.Comparacao;
 import com.lpn3.licitamatch.model.Licitacao;
 import com.lpn3.licitamatch.model.Proposta;
 import com.lpn3.licitamatch.model.Usuario;
@@ -7,6 +8,7 @@ import com.lpn3.licitamatch.service.ComparacaoService;
 import com.lpn3.licitamatch.service.LicitacaoService;
 import com.lpn3.licitamatch.service.PropostaService; // Importa o serviço de Proposta
 import com.lpn3.licitamatch.session.UserSession;
+import java.awt.event.ActionEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,16 +19,23 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import org.w3c.dom.Node;
 
 public class UploadController {
 
-    @FXML private Button botaoProposta;
-    @FXML private Button botaoLicitacao;
-    @FXML private Button botaoComparar;
+    @FXML
+    private Button botaoProposta;
+    @FXML
+    private Button botaoLicitacao;
+    @FXML
+    private Button botaoComparar;
 
-    @FXML private Label labelProposta;
-    @FXML private Label labelLicitacao;
-    @FXML private Label labelResultado;
+    @FXML
+    private Label labelProposta;
+    @FXML
+    private Label labelLicitacao;
+    @FXML
+    private Label labelResultado;
 
     private Proposta propostaSalva;
     private Licitacao licitacaoSalva;
@@ -34,7 +43,6 @@ public class UploadController {
     private final LicitacaoService licitacaoService = new LicitacaoService();
     private final PropostaService propostaService = new PropostaService();
     private final ComparacaoService comparacaoService = new ComparacaoService();
-
 
     @FXML
     private void selecionarArquivoLicitacao(ActionEvent event) {
@@ -52,7 +60,7 @@ public class UploadController {
             }
         }
     }
-    
+
     @FXML
     private void selecionarArquivoProposta(ActionEvent event) {
         File arquivo = escolherArquivoPDF("Selecionar Arquivo de Proposta");
@@ -78,20 +86,29 @@ public class UploadController {
         }
 
         try {
-            // Chama o serviço para realizar a comparação e salvar o resultado.
             Comparacao resultado = comparacaoService.realizarComparacao(licitacaoSalva, propostaSalva);
-            
-            // Atualiza a interface com a nota do resultado.
-            labelResultado.setText("Comparação realizada com sucesso! Nota: " + resultado.getNota() + "%");
-            showAlert(Alert.AlertType.INFORMATION, "Comparação Concluída", "O resultado foi salvo no banco de dados.");
+
+            // --- CÓDIGO PARA ABRIR A NOVA TELA ---
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Resultado.fxml"));
+            Parent root = loader.load();
+
+            // Pega a instância do controller da nova tela
+            ResultadoController resultadoController = loader.getController();
+            // Passa os dados do resultado para o controller
+            resultadoController.initData(resultado);
+
+            // Mostra a nova cena
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Resultado da Análise");
+            stage.show();
 
         } catch (Exception e) {
-            showAlert(Alert.AlertType.ERROR, "Erro", "Ocorreu um erro ao realizar a comparação: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Erro na Comparação", "Ocorreu um erro ao analisar os documentos: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    
     /**
      * Método auxiliar para abrir o FileChooser e evitar repetição de código.
      */
