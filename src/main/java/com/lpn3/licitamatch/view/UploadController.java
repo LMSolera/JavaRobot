@@ -1,14 +1,14 @@
 package com.lpn3.licitamatch.view;
 
-import com.lpn3.licitamatch.model.Comparacao;
+
 import com.lpn3.licitamatch.model.Licitacao;
 import com.lpn3.licitamatch.model.Proposta;
+import com.lpn3.licitamatch.model.Comparacao;
 import com.lpn3.licitamatch.model.Usuario;
 import com.lpn3.licitamatch.service.ComparacaoService;
 import com.lpn3.licitamatch.service.LicitacaoService;
 import com.lpn3.licitamatch.service.PropostaService; // Importa o serviço de Proposta
 import com.lpn3.licitamatch.session.UserSession;
-import java.awt.event.ActionEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,10 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
-import org.w3c.dom.Node;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 public class UploadController {
 
@@ -53,7 +55,10 @@ public class UploadController {
                 // Salva o objeto retornado pelo serviço.
                 this.licitacaoSalva = licitacaoService.salvarNovaLicitacao(usuarioLogado, arquivo);
                 labelLicitacao.setText(arquivo.getName());
-                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Licitação salva com ID: " + licitacaoSalva.getId());
+                
+                licitacaoSalva.setFilePdf(arquivo);
+                
+                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Licitação no banco com ID: " + licitacaoSalva.getId());               
             } catch (Exception e) {
                 showAlert(Alert.AlertType.ERROR, "Erro", "Não foi possível salvar a licitação: " + e.getMessage());
                 e.printStackTrace();
@@ -70,7 +75,10 @@ public class UploadController {
                 // Salva o objeto retornado pelo serviço.
                 this.propostaSalva = propostaService.salvarNovaProposta(usuarioLogado, arquivo);
                 labelProposta.setText(arquivo.getName());
-                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Proposta salva com ID: " + propostaSalva.getId());
+                
+                propostaSalva.setFilePdf(arquivo);
+                
+                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Proposta no banco com ID: " + propostaSalva.getId());         
             } catch (Exception e) {
                 showAlert(Alert.AlertType.ERROR, "Erro", "Não foi possível salvar a proposta: " + e.getMessage());
                 e.printStackTrace();
@@ -86,7 +94,7 @@ public class UploadController {
         }
 
         try {
-            Comparacao resultado = comparacaoService.realizarComparacao(licitacaoSalva, propostaSalva);
+            Comparacao resultado = comparacaoService.realizarComparacao(propostaSalva, licitacaoSalva);
 
             // --- CÓDIGO PARA ABRIR A NOVA TELA ---
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Resultado.fxml"));
