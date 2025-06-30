@@ -25,13 +25,15 @@ O LiciMatch foi desenvolvido para combater a burocracia e a complexidade do sist
 <table>
   <tr>
     <td align="center"><strong>Tela de Login</strong></td>
+    <td align="center"><strong>Tela de Registro</strong></td>
     <td align="center"><strong>Tela de Upload</strong></td>
     <td align="center"><strong>Tela de Resultados</strong></td>
   </tr>
   <tr>
-    <td><img src="URL_DA_SUA_IMAGEM_DE_LOGIN_AQUI" width="250px" alt="Tela de Login"/></td>
-    <td><img src="URL_DA_SUA_IMAGEM_DE_UPLOAD_AQUI" width="250px" alt="Tela de Upload"/></td>
-    <td><img src="URL_DA_SUA_IMAGEM_DE_RESULTADOS_AQUI" width="250px" alt="Tela de Resultados"/></td>
+    <td><img src="./screenshots/TelaLogin.jpeg" width="250px" alt="Tela de Login"/></td>
+    <td><img src="./screenshots/TelaRegistro.jpeg" width="250px" alt="Tela de Registro"/></td>
+    <td><img src="./screenshots/TelaUpload.jpeg" width="250px" alt="Tela de Upload"/></td>
+    <td><img src="./screenshots/TelaComparacao.jpeg" width="250px" alt="Tela de Comparação"/></td>
   </tr>
 </table>
 
